@@ -23,6 +23,6 @@ cd tmp
 ./configure --without-readline
 _build/oils.sh
 
-cp _bin/cxx-opt-sh/oils-for-unix oils-for-unix-${VERSION}-darwin-${ARCH}
+file _bin/cxx-opt-sh/oils-for-unix
 
-file oils-for-unix-${VERSION}-darwin-${ARCH}
+tar -czvf oils-for-unix-${VERSION}-darwin-${ARCH}.tar.gz -C _bin/cxx-opt-sh oils-for-unix

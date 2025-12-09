@@ -31,5 +31,5 @@ jobs:
           tag_name: oils-for-unix-${{ steps.version.outputs.version }}
           name: oils-for-unix ${{ steps.version.outputs.version }}
           files: |
-            tmp/oils-for-unix-${{ steps.version.outputs.version }}-darwin-x86_64
-            tmp/oils-for-unix-${{ steps.version.outputs.version }}-darwin-arm64
+            tmp/oils-for-unix-${{ steps.version.outputs.version }}-darwin-x86_64.tar.gz
+            tmp/oils-for-unix-${{ steps.version.outputs.version }}-darwin-arm64.tar.gz
