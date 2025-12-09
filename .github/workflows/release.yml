@@ -28,12 +28,12 @@ jobs:
         run: ./build.sh arm64
 
       - name: Attest x86_64 build
-        uses: actions/attest-build-provenance@v2
+        uses: actions/attest-build-provenance@977bb373ede98d70efdf65b84cb5f73e068dcc2a #3.0.0
         with:
           subject-path: tmp/oils-for-unix-${{ steps.version.outputs.version }}-darwin-x86_64.tar.gz
 
       - name: Attest arm64 build
-        uses: actions/attest-build-provenance@v2
+        uses: actions/attest-build-provenance@977bb373ede98d70efdf65b84cb5f73e068dcc2a #3.0.0
         with:
           subject-path: tmp/oils-for-unix-${{ steps.version.outputs.version }}-darwin-arm64.tar.gz
 
