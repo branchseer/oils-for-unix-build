@@ -1,0 +1,35 @@
+name: Build and Release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build-and-release:
+    runs-on: macos-14
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read version
+        id: version
+        run: echo "version=$(cat version.txt)" >> $GITHUB_OUTPUT
+
+      - name: Download oils-for-unix source
+        run: ./download.sh
+
+      - name: Build for x86_64
+        run: ./build.sh x86_64
+
+      - name: Build for arm64
+        run: ./build.sh arm64
+
+      - name: Create Release
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b #2.5.0
+        with:
+          tag_name: v${{ steps.version.outputs.version }}
+          name: oils-for-unix ${{ steps.version.outputs.version }}
+          files: |
+            tmp/oils-for-unix-${{ steps.version.outputs.version }}-darwin-x86_64
+            tmp/oils-for-unix-${{ steps.version.outputs.version }}-darwin-arm64
